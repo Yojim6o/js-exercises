@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8 />
+<title>1.3</title>
+</head>
+<body>
+
+<!--
+    Write a JavaScript program to get the current date.
+    Expected Output :
+        mm-dd-yyyy,
+        mm/dd/yyyy
+        or
+        dd-mm-yyyy,
+        dd/mm/yyyy
+-->
+
+<script>
+
+    function addZero(t) {
+        if (t < 10) {
+            return "0" + t;
+        } else {
+            return t;
+        }
+    }
+
+    var date = new Date();
+    var month = addZero(date.getMonth() + 1);
+    var day = addZero(date.getDay());
+    var year = addZero(date.getYear() + 1900);
+
+    function formatDate (sep) {
+        return month + sep + day + sep + year;
+    }
+
+    document.write(formatDate('-'));
+    document.write('<br>');
+    document.write(formatDate('/'));
+
+</script>
+</body>
+</html>
