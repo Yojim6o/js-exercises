@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8 />
+<title>1.8</title>
+<script>
+
+/*
+Write a JavaScript program where the program takes a random
+integer between 1 to 10, the user is then prompted to input
+a guess number. If the user input matches with guess number,
+the program will display a message "Good Work" otherwise display
+a message "Not matched".
+*/
+
+var number;
+
+(function makeNumber() {
+    number = Math.round(Math.random() * 10);
+    if (number === 0) {
+        makeNumber();
+    }
+    number = number.toString();
+    return number;
+})();
+
+function process() {
+    var val = document.getElementById('textBox').value;
+    var message = document.getElementById('message');
+    if (val === number) {
+        message.innerHTML = "Good Work";
+    } else {
+        message.innerHTML = "Not matched";
+    }
+}
+
+/* another answer
+ var num = Math.ceil(Math.random() * 10);
+ var gnum = prompt('Guess the number between 1 and 10 inclusive');
+ if (gnum == num)
+   alert('Matched');
+  else
+   alert('Not matched, the number was ' + num);
+*/
+
+</script>
+</head>
+<body>
+    Pick a number between 1 and 10
+    <input id="textBox" type="text" />
+    <button onClick="process()">Submit</button>
+    <div id="message"></div>
+</body>
+</html>
