@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8 />
+<title>2.2</title>
+<script>
+
+/*
+Write a JavaScript function that checks whether a passed string is palindrome or not?
+
+Note: A palindrome is word, phrase, or sequence that reads the same backward as
+forward, e.g., madam or nurses run.
+*/
+
+function palindrome(string){
+
+    // Change the string into lower case and remove all non-alphanumeric characters
+    var formattedString = string.toLowerCase().replace(/[^a-zA-Z0-9]+/g,'');
+
+    // declare a variable that tracks how many letter pairs will be compared with
+    // each other. declare it at the highest level within the function for scope
+    // purposes
+    var letterPairs = 0;
+
+    // Check if the length of the string is even or odd
+    // if even, divide string by 2
+    if ((formattedString.length) % 2 === 0) {
+        letterPairs = (formattedString.length) / 2;
+    } else {
+        // if odd..
+
+        // If the length of the string is 1 then it becomes a palindrome
+        if (formattedString.length === 1) {
+            document.write(string + " is a palindrome<br>");
+            return;
+        } else {
+            // If the length of the string is odd ignore middle character
+            letterPairs = (formattedString.length - 1) / 2;
+        }
+
+    }
+
+    // start comparing letter pairs
+    // Loop through to check the first character to the last character and then move next
+    for (var x = 0; x < letterPairs; x++) {
+        // start comparing letters. if not equal, return early.
+        if (formattedString[x] != formattedString.slice(-1-x)[0]) {
+            document.write(string + " is not a palindrome<br>");
+            return;
+        }
+    }
+    document.write(string + " is a palindrome<br>");
+    return;
+}
+
+
+palindrome('madam');
+palindrome('nurses run');
+palindrome('fox');
+
+</script>
+</head>
+<body>
+</body>
+</html>
